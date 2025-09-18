@@ -39,3 +39,33 @@ To get permissions for specific mailboxes, create a text file with mailbox names
 ```powershell
 ./GetSharedMailboxPermissionsOnprem.ps1 -MBNamesFile "path\to\mailboxes.txt"
 ```
+
+## Additional information:
+
+Additional information and use cases can be found here: https://o365reports.com/2020/01/03/shared-mailbox-permission-report-to-csv/
+
+## Known issues
+
+Sometimes script sign error can occur preventing form executing unsigned scripts. 
+
+<img src="https://github.com/ambersearch/Tools/assets/44996098/e9dcd605-205d-496a-b6ae-8dab1f10be3f" height="100px" />
+
+
+To solve this issue you can temporary or permanently change current security policy.
+
+To check current policy following command can be used in PowerShell **with administrative rights**. 
+
+```powershell
+Get-ExecutionPolicy -List
+```
+
+You will see something like this:
+<img src="https://github.com/ambersearch/Tools/assets/44996098/226894eb-9a33-4390-a138-b42c35406374" height="200px" />
+
+To change current execution policy:
+
+```powershell
+Set-ExecutionPolicy -Scope  LocalMachine -ExecutionPolicy bypass
+```
+
+More info: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4
